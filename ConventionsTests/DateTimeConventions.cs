@@ -7,7 +7,7 @@ using Xunit;
 
 namespace ConventionsTests
 {
-    public class DateTimeTests
+    public class DateTimeConventions
     {
         [Fact]
         public void DateTimeNow_IsNeverUsed()
@@ -24,11 +24,11 @@ namespace ConventionsTests
                     .OfType<MemberAccessExpressionSyntax>()
                     .ToList();
 
-                var datetimeNowInvocations = memberAccesses
+                var dateTimeNowInvocations = memberAccesses
                     .Where(m => m.Expression.Parent.ToString().Equals("datetime.now", StringComparison.OrdinalIgnoreCase))
                     .ToList();
 
-                Assert.Empty(datetimeNowInvocations);
+                Assert.Empty(dateTimeNowInvocations);
             }
         }
     }
