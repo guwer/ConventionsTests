@@ -33,7 +33,7 @@ namespace ConventionsTests
                 .GetTypes()
                 .SelectMany(t => t.GetMethods())
                 .Where(m => m.IsTestMethod() &&
-                    (m.DisplayNameMissing() || m.DisplayNameIsEmpty()));
+                    (m.IsDisplayNameMissing() || m.IsDisplayNameEmpty()));
 
             methods.Should().BeEmpty();
         }

@@ -7,7 +7,7 @@ namespace ConventionsTests
 {
     public static class MethodInfoExtensions
     {
-        public static bool DisplayNameIsEmpty(this MethodInfo method)
+        public static bool IsDisplayNameEmpty(this MethodInfo method)
         {
             return method.CustomAttributes
                 .SelectMany(a => a.NamedArguments)
@@ -15,7 +15,7 @@ namespace ConventionsTests
                 .Select(n => n.TypedValue.Value).Cast<string>().Single().Length == 0;
         }
 
-        public static bool DisplayNameMissing(this MethodInfo method)
+        public static bool IsDisplayNameMissing(this MethodInfo method)
         {
             return !method.CustomAttributes
                 .SelectMany(a => a.NamedArguments)
