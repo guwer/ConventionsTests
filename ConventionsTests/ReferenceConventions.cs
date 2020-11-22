@@ -8,7 +8,7 @@ namespace ConventionsTests
 {
     public class ReferenceConventions
     {
-        [Fact]
+        [Fact(DisplayName = "s")]
         public void AssemblyADoesNotReferenceAssemblyB()
         {
             var refernecedAssemblies = typeof(Class1).Assembly.GetReferencedAssemblies();
@@ -20,7 +20,7 @@ namespace ConventionsTests
             Assert.False(result);
         }
 
-        [Fact]
+        [Fact(DisplayName = "a")]
         public void AssemblyXDoesNotReferenceAssemblyY()
         {
             // With FluentAssertions

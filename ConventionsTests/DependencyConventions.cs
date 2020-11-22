@@ -8,7 +8,7 @@ namespace ConventionsTests
 {
     public class DependencyConventions
     {
-        [Fact]
+        [Fact(DisplayName = "s")]
         public void TypesInANamespace_HaveNoDependenciesOnTypesInBNamespace()
         {
             var webAppNamespaceTypes = Types.InAssembly(typeof(HomeController).Assembly)

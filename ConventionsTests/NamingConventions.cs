@@ -7,25 +7,25 @@ namespace ConventionsTests
 {
     public class NamingConventions
     {
-        [Fact]
+        [Fact(DisplayName = "a")]
         public void ClassImplementingIHandler_HaveSuffixHandler()
         {
         }
 
-        [Fact]
+        [Fact(DisplayName = "a")]
         public void AttributeClass_HaveSuffixAttribute()
         {
         }
 
-        [Fact]
+        [Fact(DisplayName = "a")]
         public void EventArgsClass_HaveSuffixEventArgs()
         {
         }
 
-        [Fact(DisplayName = "")]
-        public void TestMethod()
+        [Fact(DisplayName = "a")]
+        public void TestMethods_HaveDisplayName()
         {
-            var methods = Types.InAssembly(typeof(NamingConventions).Assembly)
+            var noDisplayNameMethods = Types.InAssembly(typeof(NamingConventions).Assembly)
                 .That()
                 .AreClasses()
                 .And()
@@ -33,9 +33,34 @@ namespace ConventionsTests
                 .GetTypes()
                 .SelectMany(t => t.GetMethods())
                 .Where(m => m.IsTestMethod() &&
-                    (m.IsDisplayNameMissing() || m.IsDisplayNameEmpty()));
+                    (m.IsDisplayNameMissing() || m.IsDisplayNameValueEmpty()));
 
-            methods.Should().BeEmpty();
+            noDisplayNameMethods.Should().BeEmpty();
         }
+
+        [Fact(DisplayName = "a")]
+        public void SkippedTestMethods_HaveReason()
+        {
+            // Methods marked with "Skip" with no reason text are not skipped.
+            // This test checks if reason is not empty (Skip = "").
+            var noSkipReasonMethods = Types.InAssembly(typeof(NamingConventions).Assembly)
+                .That()
+                .AreClasses()
+                .And()
+                .HaveNameEndingWith("Conventions")
+                .GetTypes()
+                .SelectMany(t => t.GetMethods())
+                .Where(m => m.IsSkippedTestMethod() &&  m.IsSkipReasonEmpty());
+
+            noSkipReasonMethods.Should().BeEmpty();
+        }
+
+        [Fact(DisplayName = "a", Skip = "s")]
+        public void SkippedMethod()
+        { }
+
+        //[Fact(DisplayName = "a", Skip = "")]
+        //public void NotSkippedMethod()
+        //{ }
     }
 }

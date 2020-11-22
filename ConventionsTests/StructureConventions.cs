@@ -7,7 +7,7 @@ namespace ConventionsTests
 {
     public class StructureConventions
     {
-        [Fact]
+        [Fact(DisplayName ="d")]
         public void TypesInControllersNamespace_InheritFromController()
         {
             var controllers = Types.InAssembly(typeof(HomeController).Assembly)
@@ -25,7 +25,7 @@ namespace ConventionsTests
             Assert.True(result.IsSuccessful);
         }
 
-        [Fact]
+        [Fact(DisplayName = "d")]
         public void TypesInHandlersNamespace_ImplementIHandler()
         {
         }
