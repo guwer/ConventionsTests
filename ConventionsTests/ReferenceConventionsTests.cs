@@ -1,12 +1,12 @@
-﻿using Common;
+﻿using System.Linq;
+using Common;
 using FluentAssertions;
-using System.Linq;
 using WebApp.Controllers;
 using Xunit;
 
 namespace ConventionsTests
 {
-    public class ReferenceConventions
+    public class ReferenceConventionsTests
     {
         [Fact(DisplayName = "s")]
         public void AssemblyADoesNotReferenceAssemblyB()

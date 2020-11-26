@@ -5,7 +5,7 @@ using Xunit;
 
 namespace ConventionsTests
 {
-    public class StructureConventions
+    public class StructureConventionsTests
     {
         [Fact(DisplayName ="d")]
         public void TypesInControllersNamespace_InheritFromController()

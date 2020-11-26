@@ -1,11 +1,11 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using NetArchTest.Rules;
-using System.Linq;
 using Xunit;
 
 namespace ConventionsTests
 {
-    public class NamingConventions
+    public class NamingConventionsTests
     {
         [Fact(DisplayName = "a")]
         public void ClassImplementingIHandler_HaveSuffixHandler()
@@ -25,7 +25,7 @@ namespace ConventionsTests
         [Fact(DisplayName = "a")]
         public void TestMethods_HaveDisplayName()
         {
-            var noDisplayNameMethods = Types.InAssembly(typeof(NamingConventions).Assembly)
+            var noDisplayNameMethods = Types.InAssembly(typeof(NamingConventionsTests).Assembly)
                 .That()
                 .AreClasses()
                 .And()
@@ -43,7 +43,7 @@ namespace ConventionsTests
         {
             // Methods marked with "Skip" with no reason text are not skipped.
             // This test checks if reason is not empty (Skip = "").
-            var noSkipReasonMethods = Types.InAssembly(typeof(NamingConventions).Assembly)
+            var noSkipReasonMethods = Types.InAssembly(typeof(NamingConventionsTests).Assembly)
                 .That()
                 .AreClasses()
                 .And()

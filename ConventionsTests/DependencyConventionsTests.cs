@@ -1,12 +1,12 @@
-﻿using Common;
+﻿using System.Linq;
+using Common;
 using NetArchTest.Rules;
-using System.Linq;
 using WebApp.Controllers;
 using Xunit;
 
 namespace ConventionsTests
 {
-    public class DependencyConventions
+    public class DependencyConventionsTests
     {
         [Fact(DisplayName = "s")]
         public void TypesInANamespace_HaveNoDependenciesOnTypesInBNamespace()
