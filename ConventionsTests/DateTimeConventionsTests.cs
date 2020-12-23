@@ -12,7 +12,7 @@ namespace ConventionsTests
         [Fact(DisplayName = "s")]
         public void DateTimeNow_IsNeverUsed()
         {
-            var sourceFiles = ConventionsHelper.GetSourceFiles();
+            var sourceFiles = ConventionsHelper.SourceFiles;
 
             foreach (var file in sourceFiles)
             {

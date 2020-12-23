@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using FluentAssertions;
 using NetArchTest.Rules;
 using Xunit;
@@ -58,6 +59,24 @@ namespace ConventionsTests
         [Fact(DisplayName = "a", Skip = "s")]
         public void SkippedMethod()
         { }
+
+        [Theory(DisplayName = "File names have correct acronym casing")]
+        [InlineData("dto", "Dto")]
+        [InlineData("uri", "Uri")]
+        [InlineData("dpi", "Dpi")]
+        [InlineData("dsi", "Dsi")]
+        [InlineData("aop", "Aop")]
+        public void FileNames_HaveCorrectAcronymCasing(string element, string expectedElement)
+        {
+            var namesWithElement = ConventionsHelper
+                .SourceFiles
+                .Select(f => Path.GetFileName(f))
+                .Where(f => f.ToLower().Contains(element));
+
+            var correctNames = namesWithElement.Where(f => f.Contains(expectedElement));
+
+            correctNames.Should().BeEquivalentTo(namesWithElement);
+        }
 
         //[Fact(DisplayName = "a", Skip = "")]
         //public void NotSkippedMethod()
