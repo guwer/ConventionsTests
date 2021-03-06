@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace DriveProfilesNetApp.ConventionsTests
+namespace ConventionsTests
 {
     public static class AssemblyEnumerableExtensions
     {

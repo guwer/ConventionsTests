@@ -1,10 +1,9 @@
-﻿using System.Linq;
-using ConventionsTests;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NetArchTest.Rules;
+using System.Linq;
 using Xunit;
 
-namespace DriveProfilesNetApp.ConventionsTests
+namespace ConventionsTests
 {
     public class TestMethodsConventionsTests
     {

@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.IO;
 using System.Linq;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Xunit;
 
 namespace ConventionsTests
 {
     public class DateTimeConventionsTests
     {
-        [Fact(DisplayName = "s")]
+        [Fact(DisplayName = "test")]
         public void DateTimeNow_IsNeverUsed()
         {
             var sourceFiles = ConventionsHelper.SourceFiles;

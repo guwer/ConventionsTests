@@ -1,29 +1,29 @@
-﻿using System.IO;
-using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NetArchTest.Rules;
+using System.IO;
+using System.Linq;
 using Xunit;
 
 namespace ConventionsTests
 {
     public class NamingConventionsTests
     {
-        [Fact(DisplayName = "a")]
+        [Fact(DisplayName = "test")]
         public void ClassImplementingIHandler_HaveSuffixHandler()
         {
         }
 
-        [Fact(DisplayName = "a")]
+        [Fact(DisplayName = "test")]
         public void AttributeClass_HaveSuffixAttribute()
         {
         }
 
-        [Fact(DisplayName = "a")]
+        [Fact(DisplayName = "test")]
         public void EventArgsClass_HaveSuffixEventArgs()
         {
         }
 
-        [Fact(DisplayName = "a")]
+        [Fact(DisplayName = "test")]
         public void TestMethods_HaveDisplayName()
         {
             var noDisplayNameMethods = Types.InAssembly(typeof(NamingConventionsTests).Assembly)
@@ -39,7 +39,7 @@ namespace ConventionsTests
             noDisplayNameMethods.Should().BeEmpty();
         }
 
-        [Fact(DisplayName = "a")]
+        [Fact(DisplayName = "test")]
         public void SkippedTestMethods_HaveReason()
         {
             // Methods marked with "Skip" with no reason text are not skipped.
@@ -56,16 +56,13 @@ namespace ConventionsTests
             noSkipReasonMethods.Should().BeEmpty();
         }
 
-        [Fact(DisplayName = "a", Skip = "s")]
+        [Fact(DisplayName = "test", Skip = "reason")]
         public void SkippedMethod()
         { }
 
         [Theory(DisplayName = "File names have correct acronym casing")]
         [InlineData("dto", "Dto")]
-        [InlineData("uri", "Uri")]
-        [InlineData("dpi", "Dpi")]
-        [InlineData("dsi", "Dsi")]
-        [InlineData("aop", "Aop")]
+        [InlineData("qa", "QA")]
         public void FileNames_HaveCorrectAcronymCasing(string element, string expectedElement)
         {
             var namesWithElement = ConventionsHelper

@@ -1,6 +1,6 @@
-﻿using System.Linq;
-using Common;
+﻿using Common;
 using NetArchTest.Rules;
+using System.Linq;
 using WebApp.Controllers;
 using Xunit;
 
@@ -8,8 +8,8 @@ namespace ConventionsTests
 {
     public class DependencyConventionsTests
     {
-        [Fact(DisplayName = "s")]
-        public void TypesInANamespace_HaveNoDependenciesOnTypesInBNamespace()
+        [Fact(DisplayName = "test")]
+        public void TypesInCommonNamespace_HaveNoDependenciesOnTypesInWebaAppNamespace()
         {
             var webAppNamespaceTypes = Types.InAssembly(typeof(HomeController).Assembly)
                 .That()

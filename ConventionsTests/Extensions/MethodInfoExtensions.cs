@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Xunit;
 
-namespace DriveProfilesNetApp.ConventionsTests
+namespace ConventionsTests
 {
     public static class MethodInfoExtensions
     {

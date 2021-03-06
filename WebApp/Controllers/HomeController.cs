@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApp.Models;
 
@@ -6,6 +7,8 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private Class1 cls;
+
         public IActionResult Index()
         {
             return View();
