@@ -47,7 +47,7 @@ namespace ConventionsTests
             noSkipReasonMethods.Should().BeEmpty();
         }
 
-        [Fact(DisplayName = "test", Skip = "reason")]
+        [Fact(DisplayName = "SkippedMethod", Skip = "reason")]
         public void SkippedMethod()
         { }
 
