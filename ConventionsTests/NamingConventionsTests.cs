@@ -23,42 +23,24 @@ namespace ConventionsTests
         {
         }
 
-        [Fact(DisplayName = "test")]
+        [Fact(DisplayName = "Test Methods Have Display Name")]
         public void TestMethods_HaveDisplayName()
         {
-            var noDisplayNameMethods = Types.InAssembly(typeof(NamingConventionsTests).Assembly)
+            var testMethods = Types.InAssemblies(ConventionsHelper.SolutionAssemblies.OnlyTestsAssemblies())
                 .That()
                 .AreClasses()
                 .And()
-                .HaveNameEndingWith("Conventions")
+                .HaveNameEndingWith("Tests")
                 .GetTypes()
                 .SelectMany(t => t.GetMethods())
-                .Where(m => m.IsTestMethod() &&
-                    (m.IsDisplayNameMissing() || m.IsDisplayNameValueEmpty()));
+                .Where(m => m.IsTestMethod());
 
+            var noDisplayNameMethods = testMethods
+                .Where(m => m.IsDisplayNameMissing() || m.IsDisplayNameValueEmpty());
+
+            testMethods.Should().NotBeEmpty();
             noDisplayNameMethods.Should().BeEmpty();
         }
-
-        [Fact(DisplayName = "test")]
-        public void SkippedTestMethods_HaveReason()
-        {
-            // Methods marked with "Skip" with no reason text are not skipped.
-            // This test checks if reason is not empty (Skip = "").
-            var noSkipReasonMethods = Types.InAssembly(typeof(NamingConventionsTests).Assembly)
-                .That()
-                .AreClasses()
-                .And()
-                .HaveNameEndingWith("Conventions")
-                .GetTypes()
-                .SelectMany(t => t.GetMethods())
-                .Where(m => m.IsSkippedTestMethod() &&  m.IsSkipReasonEmpty());
-
-            noSkipReasonMethods.Should().BeEmpty();
-        }
-
-        [Fact(DisplayName = "test", Skip = "reason")]
-        public void SkippedMethod()
-        { }
 
         [Theory(DisplayName = "File names have correct acronym casing")]
         [InlineData("dto", "Dto")]
@@ -74,9 +56,5 @@ namespace ConventionsTests
 
             correctNames.Should().BeEquivalentTo(namesWithElement);
         }
-
-        //[Fact(DisplayName = "a", Skip = "")]
-        //public void NotSkippedMethod()
-        //{ }
     }
 }

@@ -7,7 +7,7 @@ namespace ConventionsTests
 {
     public class StructureConventionsTests
     {
-        [Fact(DisplayName ="test")]
+        [Fact(DisplayName = "Types In Controllers Namespace Inherit From Controller")]
         public void TypesInControllersNamespace_InheritFromController()
         {
             var controllers = Types.InAssembly(typeof(HomeController).Assembly)

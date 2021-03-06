@@ -8,8 +8,8 @@ namespace ConventionsTests
 {
     public class ReferenceConventionsTests
     {
-        [Fact(DisplayName = "test")]
-        public void AssemblCommonDoesNotReferenceAssemblyWebApp()
+        [Fact(DisplayName = "Assembly Common Does Not Reference Assembly WebApp")]
+        public void AssemblyCommonDoesNotReferenceAssemblyWebApp()
         {
             var refernecedAssemblies = typeof(Class1).Assembly.GetReferencedAssemblies();
             var result = refernecedAssemblies
@@ -20,15 +20,15 @@ namespace ConventionsTests
             Assert.False(result);
         }
 
-        [Fact(DisplayName = "test")]
-        public void AssemblCommonDoesNotReferenceAssemblyWebApp_WithFluentAssertions()
+        [Fact(DisplayName = "Assembly Common Does Not Reference Assembly WebApp With Fluent Assertions")]
+        public void AssemblyCommonDoesNotReferenceAssemblyWebApp_WithFluentAssertions()
         {
             // With FluentAssertions
             typeof(Class1).Assembly.Should().NotReference(typeof(HomeController).Assembly);
         }
 
-        [Fact(DisplayName = "test")]
-        public void AssemblWebAppReferencesAssemblyCommon()
+        [Fact(DisplayName = "Assembly WebApp References Assembly Common")]
+        public void AssemblyWebAppReferencesAssemblyCommon()
         {
             var refernecedAssemblies = typeof(HomeController).Assembly.GetReferencedAssemblies();
             var result = refernecedAssemblies

@@ -8,7 +8,7 @@ namespace ConventionsTests
 {
     public class DependencyConventionsTests
     {
-        [Fact(DisplayName = "test")]
+        [Fact(DisplayName = "Types In Common Namespace Have No Dependencies On Types In WebaApp Namespace")]
         public void TypesInCommonNamespace_HaveNoDependenciesOnTypesInWebaAppNamespace()
         {
             var webAppNamespaceTypes = Types.InAssembly(typeof(HomeController).Assembly)

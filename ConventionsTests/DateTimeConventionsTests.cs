@@ -9,7 +9,7 @@ namespace ConventionsTests
 {
     public class DateTimeConventionsTests
     {
-        [Fact(DisplayName = "test")]
+        [Fact(DisplayName = "DateTime.Now Is Never Used")]
         public void DateTimeNow_IsNeverUsed()
         {
             var sourceFiles = ConventionsHelper.SourceFiles;
