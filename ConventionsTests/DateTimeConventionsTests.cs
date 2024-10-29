@@ -15,22 +15,28 @@ namespace ConventionsTests
             var sourceFiles = ConventionsHelper.SourceFiles;
 
             Assert.NotEmpty(sourceFiles);
+    
+            var invocations = new List<string>();
+    
             foreach (var file in sourceFiles)
             {
                 var content = File.ReadAllText(file);
-
+    
                 var tree = CSharpSyntaxTree.ParseText(content);
                 var root = tree.GetRoot();
                 var memberAccesses = root.DescendantNodes()
                     .OfType<MemberAccessExpressionSyntax>()
                     .ToList();
-
+    
                 var dateTimeNowInvocations = memberAccesses
                     .Where(m => m.Expression.Parent.ToString().Equals("datetime.now", StringComparison.OrdinalIgnoreCase))
+                    .Select(m => $"{Path.GetFileName(file)} [{m.Expression.Parent.ToString()}]")
                     .ToList();
-
-                Assert.Empty(dateTimeNowInvocations);
+    
+                invocations.AddRange(dateTimeNowInvocations);
             }
+    
+            Assert.Empty(invocations.GroupBy(x => x).Select(x => new { Source = x.Key, Count = x.Count()}));
         }
     }
 }
