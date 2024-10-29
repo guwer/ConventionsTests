@@ -14,6 +14,7 @@ namespace ConventionsTests
         {
             var sourceFiles = ConventionsHelper.SourceFiles;
 
+            Assert.NotEmpty(sourceFiles);
             foreach (var file in sourceFiles)
             {
                 var content = File.ReadAllText(file);
@@ -28,7 +29,6 @@ namespace ConventionsTests
                     .Where(m => m.Expression.Parent.ToString().Equals("datetime.now", StringComparison.OrdinalIgnoreCase))
                     .ToList();
 
-                Assert.NotEmpty(sourceFiles);
                 Assert.Empty(dateTimeNowInvocations);
             }
         }
