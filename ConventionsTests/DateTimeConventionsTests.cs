@@ -28,6 +28,7 @@ namespace ConventionsTests
                     .Where(m => m.Expression.Parent.ToString().Equals("datetime.now", StringComparison.OrdinalIgnoreCase))
                     .ToList();
 
+                Assert.NotEmpty(sourceFiles);
                 Assert.Empty(dateTimeNowInvocations);
             }
         }
